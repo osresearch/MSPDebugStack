@@ -1,4 +1,5 @@
-CXXFLAGS := -fPIC -std=c++0x -fvisibility=hidden -fvisibility-inlines-hidden
+CXXFLAGS := -fPIC -std=c++0x -fvisibility=hidden -fvisibility-inlines-hidden \
+	-I/usr/include/hidapi
 
 PCH_HEADER := ./DLL430_v3/src/TI/DLL430/pch.h
 PCH_COMPILED := ./DLL430_v3/src/TI/DLL430/pch.h.gch
@@ -66,7 +67,7 @@ ifeq ($(PLATFORM),Linux)
 	BSTATIC := -Wl,-Bstatic
 	BDYNAMIC := -Wl,-Bdynamic
 
-	HIDOBJ := $(LIBTHIRD)/hid-libusb.o
+	HIDOBJ := -lhidapi-libusb
 else
 	CXX:= clang++
 
@@ -138,8 +139,11 @@ $(BSLLIB):
 
 install:
 	cp $(OUTPUT) /usr/local/lib/
+	ldconfig
 
 clean:
 	$(MAKE) -C ./ThirdParty/BSL430_DLL clean
 	@for i in $(OBJS); do rm -f $$i; done
 	@rm -f $(PCH_HEADER).?ch build.log
+	rm -f $(STATICOUTPUT).a
+	rm -f $(OUTPUT)

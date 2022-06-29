@@ -1,4 +1,5 @@
-CXXFLAGS := -fPIC -std=c++0x -fvisibility=hidden -fvisibility-inlines-hidden
+CXXFLAGS := -fPIC -std=c++0x -fvisibility=hidden -fvisibility-inlines-hidden \
+	-I/usr/include/hidapi
 
 PCH_HEADER := ./BSL430_DLL/pch.h
 PCH_COMPILED := ./BSL430_DLL/pch.h.gch
