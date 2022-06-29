@@ -1,0 +1,8 @@
+*.orig
+*.rej
+*.o
+*.a
+*.so
+.*.swp
+*.gch
+ThirdParty/lib64
