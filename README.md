@@ -8,3 +8,10 @@ and it has been tested on Ubuntu 20.04.
 The [TI-TSPA license](LICENSE.txt) allows modified versions of the source
 to be redistributed.
 
+You will also need [`mspdebug`](https://github.com/dlbeer/mspdebug) to go with it.
+To flash a device:
+
+```
+LD_LIBRARY_PATH=MSPDebugStack mspdebug tilib "prog firmware.bin"
+```
+
